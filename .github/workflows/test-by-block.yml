@@ -65,7 +65,7 @@ jobs:
 
     - name: Run Test Suite
       run: |
-        npm run chrome -- --spec cypress/integration/v2/blocks/**/*.spec.js --config baseUrl="http://localhost:8889",video=false --env STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}"
+        npm run chrome -- --spec cypress/integration/v2/blocks/**/*.spec.js --config baseUrl="http://localhost:8889",video=false --env STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
   
 
 

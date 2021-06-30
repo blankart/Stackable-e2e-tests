@@ -8,7 +8,14 @@ import { modifyLogFunc } from '../util'
  */
 Cypress.Commands.overwrite( 'get', modifyLogFunc() )
 Cypress.Commands.overwrite( 'click', modifyLogFunc() )
-Cypress.Commands.overwrite( 'type', modifyLogFunc() )
+Cypress.Commands.overwrite( 'type', modifyLogFunc( {
+	additionalArgs: () => {
+		// If the test is running in GitHub, add additiona ldelay when typing input fields.
+		if ( Cypress.env( 'GITHUB_ACTIONS' ) ) {
+			return { delay: 100 }
+		}
+	}
+} ) )
 Cypress.Commands.overwrite( 'reload', modifyLogFunc() )
 Cypress.Commands.overwrite( 'document', modifyLogFunc() )
 Cypress.Commands.overwrite( 'window', modifyLogFunc() )
