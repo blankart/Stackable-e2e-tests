@@ -63,6 +63,9 @@ jobs:
       run: |
         wp-env start
 
+    - name: Run Sample Test
+      run: |
+        npm run chrome --spec sample.spec.js --config baseUrl=http://localhost:8889
   
 
 
