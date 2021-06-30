@@ -61,7 +61,7 @@ jobs:
 
     - name: Run WordPress Local Environment 
       run: |
-        WP_ENV_PHP_VERSION=7.4.1 wp-env start --debug
+        wp-env start --debug
 
     - name: Run Accordion Test
       run: |
