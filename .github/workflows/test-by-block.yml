@@ -47,26 +47,21 @@ jobs:
     - name: Run E2E Test Dependencies
       run: npm ci
 
-    - name: Install Node in Stackable Free and Premium
+    - name: Build Stackable Premium
       run: |
         cd Stackable
         npm ci
         cd pro__premium_only
         npm ci
-
-    - name: Build Stackable Premium Plugin
-      run: |
         npm run build --if-present
 
     - name: Run WordPress Local Environment 
       run: |
-        cd ..
-        cd ..
         wp-env start
 
     - name: Run Sample Test
       run: |
-        npm run chrome --spec sample.spec.js --config baseUrl=http://localhost:8889
+        npm run chrome --spec sample.spec.js --config baseUrl="http://localhost:8889"
   
 
 
