@@ -425,6 +425,9 @@ export function resetStyle( name, options = {} ) {
 			}
 
 			cy[ combinedControlHandlers[ commandClassKey ] ]( name, omit( options, 'customOptions' ) )
+			if ( Cypress.env( 'GITHUB_ACTIONS' ) ) {
+				cy.wait( 1000 )
+			}
 		} )
 
 	// Always return the selected block which will be used in functions that require chained wp-block elements.
