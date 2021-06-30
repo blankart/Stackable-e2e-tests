@@ -1,4 +1,4 @@
 {
 	"core": "WordPress/WordPress",
-	"plugins": [ ".", "./Stackable/build/Stackable" ]
+	"plugins": [ ".", "./Stackable" ]
 }
