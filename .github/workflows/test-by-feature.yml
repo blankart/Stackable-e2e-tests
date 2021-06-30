@@ -9,8 +9,8 @@ on:
 jobs:
   build:
 
-    # Use Ubuntu 20.04.
-    runs-on: ubuntu-20.04
+    # Use MacOS
+    runs-on: macos-latest
     strategy:
       matrix:
         wp-version: ['5.7.1']
