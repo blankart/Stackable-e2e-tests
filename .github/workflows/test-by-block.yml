@@ -1,4 +1,4 @@
-name: E2E Test ( Blocks )
+name: E2E Test ( V2 Blocks )
 
 on:
   push:
@@ -59,9 +59,9 @@ jobs:
       run: |
         wp-env start --debug
 
-    - name: Run Sample Test
+    - name: Run Test By Block
       run: |
-        npm run chrome -- --spec cypress/integration/v2/blocks/sample.spec.js --config baseUrl="http://localhost:8889"
+        npm run chrome -- --spec cypress/integration/v2/blocks/*.spec.js --config baseUrl="http://localhost:8889",video=false
   
 
 
