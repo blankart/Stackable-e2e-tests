@@ -48,19 +48,20 @@ jobs:
       run: npm ci
 
     - name: Install Node in Stackable Free and Premium
-      working-directory: Stackable
       run: |
+        cd Stackable
         npm ci
         cd pro__premium_only
         npm ci
 
     - name: Build Stackable Premium Plugin
-      working-directory: Stackable/pro__premium_only
       run: |
         npm run build --if-present
 
     - name: Run WordPress Local Environment 
       run: |
+        cd ..
+        cd ..
         wp-env start
 
     - name: Run Sample Test
