@@ -145,6 +145,7 @@ function rangeControl( name, value, options = {} ) {
 	cy.getBaseControl( name, { isInPopover } )
 		.find( 'input.components-input-control__input' )
 		.type( `{selectall}${ value }{enter}`, { force: true } )
+		.should( 'have.value', value )
 }
 
 /**
@@ -425,9 +426,6 @@ export function resetStyle( name, options = {} ) {
 			}
 
 			cy[ combinedControlHandlers[ commandClassKey ] ]( name, omit( options, 'customOptions' ) )
-			if ( Cypress.env( 'GITHUB_ACTIONS' ) ) {
-				cy.wait( 1000 )
-			}
 		} )
 
 	// Always return the selected block which will be used in functions that require chained wp-block elements.
