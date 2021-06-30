@@ -57,6 +57,7 @@ jobs:
 
     - name: Run WordPress Local Environment 
       run: |
+        ls
         wp-env start
 
     - name: Run Sample Test
