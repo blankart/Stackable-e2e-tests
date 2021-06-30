@@ -61,7 +61,7 @@ jobs:
 
     - name: Run Sample Test
       run: |
-        npm run chrome --spec sample.spec.js --config baseUrl="http://localhost:8889"
+        npm run chrome -- --spec cypress/integration/v2/blocks/sample.spec.js --config baseUrl="http://localhost:8889"
   
 
 
