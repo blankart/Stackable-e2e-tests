@@ -33,11 +33,9 @@ jobs:
     - name: Setup the Stackable Free and Premium Repository
       run: |
         git clone https://github.com/gambitph/Stackable.git
-        git clone https://${{ secrets.ACCESS_KEY }}@github.com/bfintal/Stackable-Premium
         cd Stackable
-        mkdir pro__premium_only
+        git clone https://${{ secrets.ACCESS_KEY }}@github.com/bfintal/Stackable-Premium pro__premium_only
         cd ..
-        find Stackable-Premium/ -maxdepth 1 -mindepth 1 -exec mv {} Stackable/pro__premium_only \;
 
     - name: Setup Node
       uses: actions/setup-node@v1
