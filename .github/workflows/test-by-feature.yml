@@ -37,7 +37,7 @@ jobs:
         cd Stackable
         mkdir pro__premium_only
         cd ..
-        find Stackable-Premium/ -maxdepth 1 -mindepth 1 -exec mv -t Stackable/pro__premium_only {} +
+        find Stackable-Premium/ -maxdepth 1 -mindepth 1 -exec mv {} Stackable/pro__premium_only \;
 
     - name: Setup Node
       uses: actions/setup-node@v1
