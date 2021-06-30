@@ -30,7 +30,7 @@ jobs:
     - name: Setup the Stackable Free and Premium Repository
       run: |
         git clone https://github.com/gambitph/Stackable.git
-        git clone https://${{ secrest.ACCESS_KEY }}@github.com/bfintal/Stackable-Premium
+        git clone https://${{ secrets.ACCESS_KEY }}@github.com/bfintal/Stackable-Premium
         cd Stackable
         mkdir pro__premium_only
         cd ..
@@ -58,6 +58,5 @@ jobs:
       working-directory: Stackable/pro__premium_only
       run: |
         npm run build --if-present
-
 
 
