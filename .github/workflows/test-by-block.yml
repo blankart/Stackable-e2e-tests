@@ -59,4 +59,10 @@ jobs:
       run: |
         npm run build --if-present
 
+    - name: Run WordPress Local Environment 
+      run: |
+        wp-env start
+
+  
+
 
