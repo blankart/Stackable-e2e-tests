@@ -44,20 +44,19 @@ jobs:
     - name: Install @wordpress/env
       run: npm install -g @wordpress/env
 
-    #- name: Run E2E Test Dependencies
-      #run: npm ci
+    - name: Run E2E Test Dependencies
+      run: npm ci
 
     - name: Build Stackable Premium
       run: |
         cd Stackable
-        # npm ci
+        npm ci
         cd pro__premium_only
-        # npm ci
-        # npm run build --if-present
+        npm ci
+        npm run build --if-present
 
     - name: Run WordPress Local Environment 
       run: |
-        ls
         wp-env start
 
     - name: Run Sample Test
