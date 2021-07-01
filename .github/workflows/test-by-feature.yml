@@ -63,10 +63,12 @@ jobs:
     - name: Run Test Suite
       uses: cypress-io/github-action@v2
       with:
+        record: true
+        group: 'Stackable v2 Features'
         browser: chrome
         spec: cypress/integration/v2/features/**/*.spec.js
         config: baseUrl="http://localhost:8889"
-        env: STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
+        env: STACKABLE_PREMIUM_CODE=${{ secrets.STACKABLE_PREMIUM_CODE }},GITHUB_ACTIONS=true,CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_ACCESS_KEY }},GITHUB_TOKEN=${{ secrets.ACCESS_KEY }}
     - uses: actions/upload-artifact@v2
       if: failure()
       with:
