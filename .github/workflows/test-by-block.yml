@@ -63,7 +63,7 @@ jobs:
         spec: cypress/integration/v2/blocks/**/accodion.spec.js
         config: baseUrl="http://localhost:8889"
         env: STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
-    - uses: actions/upload-artifacts@v2
+    - uses: actions/upload-artifact@v2
       if: failure()
       with:
         name: cypress-videos
