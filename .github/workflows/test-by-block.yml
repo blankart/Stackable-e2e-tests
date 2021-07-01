@@ -65,7 +65,7 @@ jobs:
         env:
           STACKABLE_PREMIUM_CODE: ${{ secrets.STACKABLE_PREMIUM_CODE }}
           GITHUB_ACTIONS: true
-    - uses: actions/upload-artifacts@v1
+      uses: actions/upload-artifacts@v1
       if: failure()
       with:
         name: cypress-videos
