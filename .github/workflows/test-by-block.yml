@@ -68,7 +68,11 @@ jobs:
         browser: chrome
         spec: cypress/integration/v2/blocks/**/*.spec.js
         config: baseUrl="http://localhost:8889"
-        env: STACKABLE_PREMIUM_CODE=${{ secrets.STACKABLE_PREMIUM_CODE }},GITHUB_ACTIONS=true,CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_ACCESS_KEY }},GITHUB_TOKEN=${{ secrets.ACCESS_KEY }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_KEY }} 
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_ACCESS_KEY }}
+        CYPRESS_STACKABLE_PREMIUM_CODE: ${{ secrets.STACKABLE_PREMIUM_CODE }}
+        CYPRESS_GITHUB_ACTIONS: true
 
     - uses: actions/upload-artifact@v2
       if: failure()
