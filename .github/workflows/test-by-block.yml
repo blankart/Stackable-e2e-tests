@@ -9,12 +9,13 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         wp-version: ['5.7.1']
 
     steps:
+    - uses: docker-practice/actions-setup-docker@master
     - uses: actions/checkout@v2
 
     - name: Cache node modules
