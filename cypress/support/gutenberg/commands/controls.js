@@ -145,7 +145,6 @@ function rangeControl( name, value, options = {} ) {
 	cy.getBaseControl( name, { isInPopover } )
 		.find( 'input.components-input-control__input' )
 		.type( `{selectall}${ value }{enter}`, { force: true } )
-		.should( 'have.value', value )
 }
 
 /**

@@ -9,13 +9,12 @@ on:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         wp-version: ['5.7.1']
 
     steps:
-    - uses: docker-practice/actions-setup-docker@master
     - uses: actions/checkout@v2
 
     - name: Cache node modules
@@ -62,11 +61,11 @@ jobs:
 
     - name: Run WordPress Local Environment 
       run: |
-        wp-env start --debug
+        wp-env start
 
     - name: Run Test Suite
       run: |
-        npm run chrome -- --spec cypress/integration/v2/blocks/**/*.spec.js --config baseUrl="http://localhost:8889",video=false --env STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
+        npm run headless -- --spec cypress/integration/v2/blocks/**/*.spec.js --config baseUrl="http://localhost:8889",video=false --env STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
   
 
 
