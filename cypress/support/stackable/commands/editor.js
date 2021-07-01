@@ -17,21 +17,14 @@ Cypress.Commands.overwrite( 'newPost', function( originalFn, ...args ) {
 	hideStackableModal()
 } )
 
-let stackableModalClosed = false
-
 /**
  * Function for hiding Stackable Modal if present.
  */
 export function hideStackableModal() {
-	if ( ! stackableModalClosed ) {
-		cy.wait( 3000 )
-	}
-
+	cy.wait( 10000 )
 	cy.get('body').then( $body => {
-		if ( $body.find( '.ugb-modal-welcome-video' ).length && ! stackableModalClosed ) {
-			cy.log( 'Enter' )
+		if ( $body.find( '.ugb-modal-welcome-video' ).length ) {
 			cy.get( '.ugb-modal-welcome-video button[aria-label="Close dialog"]' ).click({ force: true })
-			stackableModalClosed = true
 		}
 	} )
 }
