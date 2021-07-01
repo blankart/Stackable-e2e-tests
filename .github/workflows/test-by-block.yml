@@ -63,6 +63,7 @@ jobs:
     - name: Run Test Suite
       uses: cypress-io/github-action@v2
       with:
+        browser: chrome
         spec: cypress/integration/v2/blocks/**/*.spec.js
         config: baseUrl="http://localhost:8889"
         env: STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
