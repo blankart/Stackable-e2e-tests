@@ -63,7 +63,7 @@ jobs:
     - name: Run Test Suite
       uses: cypress-io/github-action@v2
       with:
-        spec: cypress/integration/v2/blocks/**/accodion.spec.js
+        spec: cypress/integration/v2/blocks/**/accordion.spec.js
         config: baseUrl="http://localhost:8889"
         env: STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
     - uses: actions/upload-artifact@v2
