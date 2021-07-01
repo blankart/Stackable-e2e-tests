@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        wp-version: ['5.7.1']
+        wp-version: ['5.7.2']
 
     steps:
     - uses: actions/checkout@v2
