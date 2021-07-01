@@ -13,13 +13,13 @@ const [ desktopStyle, tabletStyle, mobileStyle ] = responsiveAssertHelper( style
 const [ desktopAdvanced, tabletAdvanced, mobileAdvanced ] = responsiveAssertHelper( advancedTab, { tab: 'Advanced' } )
 
 describe( 'Accordion Block', registerTests( [
-	blockExist,
-	blockError,
-	innerBlocks,
-	switchLayout,
-	switchDesign,
-	typeContent,
-	desktopStyle,
+	//blockExist,
+	//blockError,
+	//innerBlocks,
+	//switchLayout,
+	//switchDesign,
+	//typeContent,
+	//desktopStyle,
 	tabletStyle,
 	mobileStyle,
 	desktopAdvanced,
