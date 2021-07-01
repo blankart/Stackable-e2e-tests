@@ -44,9 +44,6 @@ jobs:
     - name: Install @wordpress/env
       run: npm install -g @wordpress/env
 
-    - name: Run E2E Test Dependencies
-      run: npm ci
-
     - name: Build Stackable Premium
       run: |
         cd Stackable
@@ -59,13 +56,20 @@ jobs:
       run: |
         composer require roots/wordpress:${{ matrix.wp-version }} --dev
 
-    - name: Run WordPress Local Environment 
-      run: |
-        wp-env start
-
     - name: Run Test Suite
-      run: |
-        npm run cy:run -- --spec cypress/integration/v2/blocks/**/*.spec.js --config baseUrl="http://localhost:8889",video=false --env STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
+      uses: cypress-io/github-action@v2
+      with:
+        start: wp-env start
+        spec: cypress/integration/v2/blocks/**/accodion.spec.js
+        config: baseUrl="http://localhost:8889"
+        env:
+          STACKABLE_PREMIUM_CODE: ${{ secrets.STACKABLE_PREMIUM_CODE }}
+          GITHUB_ACTIONS: true
+    - uses: actions/upload-artifacts@v1
+      if: failure()
+      with:
+        name: cypress-videos
+        path: cypress/videos
   
 
 
