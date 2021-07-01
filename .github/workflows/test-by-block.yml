@@ -56,10 +56,13 @@ jobs:
       run: |
         composer require roots/wordpress:${{ matrix.wp-version }} --dev
 
+    - name: Run WordPress Local Environment 
+      run: |
+        wp-env start
+
     - name: Run Test Suite
       uses: cypress-io/github-action@v2
       with:
-        start: wp-env start
         spec: cypress/integration/v2/blocks/**/accodion.spec.js
         config: baseUrl="http://localhost:8889"
         env: STACKABLE_PREMIUM_CODE="${{ secrets.STACKABLE_PREMIUM_CODE }}",GITHUB_ACTIONS="true"
