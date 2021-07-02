@@ -1,9 +1,7 @@
-name: E2E Test
-
+name: E2E Test 
 on:
   push:
-    branches: [ master ]
-  pull_request:
+    branches: [ master ] pull_request:
     branches: [ master ]
 
 jobs:
@@ -58,26 +56,13 @@ jobs:
 
     - name: Install WordPress Version
       run: |
-        composer require roots/wordpress:${{ matrix.wp-version }} --dev
+        curl -LO https//wordpress.org/wordpress-${{ matrix.wp-version }}.zip
+        mkdir wordpress
+        mv wordpress-${{ matrix.wp-version }}.zip wordpress/build.zip
 
     - name: Run WordPress Local Environment 
       run: |
         wp-env start
-
-    - name: Run Test Suite
-      uses: cypress-io/github-action@v2
-      with:
-        record: true
-        parallel: true
-        group: Stackable E2E ( ${{ matrix.stackable-versions }}/${{ matrix.test-by }} )
-        browser: chrome
-        spec: cypress/integration/${{ matrix.stackable-versions }}/${{ matrix.test-by }}/**/*.spec.js
-        config: baseUrl="http://localhost:8889",video=false
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_KEY }} 
-        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_ACCESS_KEY }}
-        CYPRESS_STACKABLE_PREMIUM_CODE: ${{ secrets.STACKABLE_PREMIUM_CODE }}
-        CYPRESS_GITHUB_ACTIONS: true
   
 
 
