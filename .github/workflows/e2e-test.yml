@@ -20,44 +20,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Cache node modules
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-node-modules
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
-
-    - name: Setup the Stackable Free and Premium Repository
-      run: |
-        git clone https://github.com/gambitph/Stackable.git
-        cd Stackable
-        git clone https://${{ secrets.ACCESS_KEY }}@github.com/bfintal/Stackable-Premium pro__premium_only
-        cd ..
-
-    - name: Setup Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
-
-    - name: Install @wordpress/env
-      run: npm install -g @wordpress/env
-
-    - name: Build Stackable Premium
-      run: |
-        cd Stackable
-        npm ci
-        cd pro__premium_only
-        npm ci
-        npm run build --if-present
-
     - name: Install WordPress Version
       run: |
-        curl -LO https//wordpress.org/wordpress-${{ matrix.wp-version }}.zip
+        curl -LO https://wordpress.org/wordpress-${{ matrix.wp-version }}.zip
         mkdir wordpress
         mv wordpress-${{ matrix.wp-version }}.zip wordpress/build.zip
 
