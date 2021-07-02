@@ -8,6 +8,9 @@
 	"defaultCommandTimeout": 5000,
 	"numTestsKeptInMemory": 5,
 	"experimentalFetchPolyfill": true,
+	"retries": {
+		"runMode": 2
+	},
 	"env": {
 		"DEBUG": "false",
 		"INCLUDED_V2_TEST_FILES": [

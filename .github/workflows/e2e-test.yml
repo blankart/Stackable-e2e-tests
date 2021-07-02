@@ -11,9 +11,10 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         wp-version: ['5.7.2']
-        containers: [1, 2, 3]
+        containers: [1, 2]
         stackable-versions: ['v2']
         test-by: ['features','blocks']
 
@@ -71,18 +72,12 @@ jobs:
         group: Stackable E2E ( ${{ matrix.stackable-versions }}/${{ matrix.test-by }} )
         browser: chrome
         spec: cypress/integration/${{ matrix.stackable-versions }}/${{ matrix.test-by }}/**/*.spec.js
-        config: baseUrl="http://localhost:8889"
+        config: baseUrl="http://localhost:8889",video=false
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_KEY }} 
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_ACCESS_KEY }}
         CYPRESS_STACKABLE_PREMIUM_CODE: ${{ secrets.STACKABLE_PREMIUM_CODE }}
         CYPRESS_GITHUB_ACTIONS: true
-
-    - uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-        name: cypress-videos
-        path: cypress/videos
   
 
 
