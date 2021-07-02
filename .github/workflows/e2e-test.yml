@@ -68,9 +68,9 @@ jobs:
       with:
         record: true
         parallel: true
-        group: Stackable E2E ( ${{ matrix.stackable-version }}/${{ matrix.test-by }} )
+        group: Stackable E2E ( ${{ matrix.stackable-versions }}/${{ matrix.test-by }} )
         browser: chrome
-        spec: cypress/integration/${{ matrix.stackable-version }}/${{ matrix.test-by }}/**/*.spec.js
+        spec: cypress/integration/${{ matrix.stackable-versions }}/${{ matrix.test-by }}/**/*.spec.js
         config: baseUrl="http://localhost:8889"
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_KEY }} 
