@@ -14,9 +14,9 @@ jobs:
       fail-fast: false
       matrix:
         wp-version: ['5.7.2']
-        containers: [1, 2]
+        containers: [1, 2, 3, 4, 5]
         stackable-versions: ['v2']
-        test-by: ['features','blocks']
+        test-by: ['(features|theme|integrations)','blocks']
 
     steps:
     - uses: actions/checkout@v2
