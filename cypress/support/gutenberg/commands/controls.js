@@ -1,6 +1,6 @@
 /**
  * External dependencies
-a*/
+*/
 import {
 	keys, first, omit, omitBy,
 } from 'lodash'
