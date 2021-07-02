@@ -1,4 +1,4 @@
-name: E2E Test (V2 Blocks)
+name: E2E Test
 
 on:
   push:
@@ -14,6 +14,8 @@ jobs:
       matrix:
         wp-version: ['5.7.2']
         containers: [1, 2, 3]
+        stackable-versions: ['v2']
+        test-by: ['features','blocks']
 
     steps:
     - uses: actions/checkout@v2
@@ -66,9 +68,9 @@ jobs:
       with:
         record: true
         parallel: true
-        group: 'Stackable v2 Blocks'
+        group: Stackable E2E ( ${{ matrix.stackable-version }}/${{ matrix.test-by }} )
         browser: chrome
-        spec: cypress/integration/v2/blocks/**/*.spec.js
+        spec: cypress/integration/${{ matrix.stackable-version }}/${{ matrix.test-by }}/**/*.spec.js
         config: baseUrl="http://localhost:8889"
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_KEY }} 
