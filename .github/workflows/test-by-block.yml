@@ -13,6 +13,7 @@ jobs:
     strategy:
       matrix:
         wp-version: ['5.7.2']
+        containers: [1, 2, 3]
 
     steps:
     - uses: actions/checkout@v2
@@ -64,6 +65,7 @@ jobs:
       uses: cypress-io/github-action@v2
       with:
         record: true
+        parallel: true
         group: 'Stackable v2 Blocks'
         browser: chrome
         spec: cypress/integration/v2/blocks/**/*.spec.js
