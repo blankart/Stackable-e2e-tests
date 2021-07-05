@@ -424,4 +424,3 @@ export const registerBlockSnapshots = alias => {
 
 	return { assertFrontendStyles: () => assertFrontendStyles( alias ) }
 }
-
